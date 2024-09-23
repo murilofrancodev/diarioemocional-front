@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EmotionService } from '../../../../services/emotion.service';
-import { Emotion } from '../../../../shared/models/emotion.model';
+import { Emotion } from '../../../../models/emotion.model';
 
 @Component({
   selector: 'app-emotion-selector',
