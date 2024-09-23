@@ -20,7 +20,7 @@ export class LoginComponent {
     const mockPassword = 'Teste';
 
     if (this.username === mockUsername && this.password === mockPassword) {
-      this.router.navigate(['/notes']); 
+      this.router.navigate(['/home']); 
     } else {
       this.openDialog('Erro', 'Usuário ou senha incorretos.'); 
     }

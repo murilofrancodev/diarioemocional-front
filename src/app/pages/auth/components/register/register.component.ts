@@ -10,7 +10,7 @@ export class RegisterComponent {
   username: string = '';
   password: string = '';
   confirmPassword: string = '';
-  pin: string = ''; // Adiciona a propriedade para o PIN
+  pin: string = ''; 
   passwordVisible: boolean = false; 
   passwordStrength: string = '';
   currentStep: number = 1; 
@@ -41,16 +41,16 @@ export class RegisterComponent {
 
   addToPin(digit: string) {
     if (this.pin.length < 4) {
-      this.pin += digit; // Adiciona o dígito ao PIN
+      this.pin += digit; 
     }
   }
 
   removeLastDigit() {
-    this.pin = this.pin.slice(0, -1); // Remove o último dígito
+    this.pin = this.pin.slice(0, -1); 
   }
 
   clearPin() {
-    this.pin = ''; // Limpa o PIN
+    this.pin = ''; 
   }
 
   onSubmit() {
@@ -64,7 +64,7 @@ export class RegisterComponent {
       }
     } else if (this.currentStep === 3) {
       if (this.pin.length === 4) {
-        alert('Registro bem-sucedido!'); // Aqui você pode adicionar a lógica para registrar o usuário
+        alert('Registro bem-sucedido!'); 
       } else {
         alert('Por favor, digite um PIN de 4 dígitos.');
       }
