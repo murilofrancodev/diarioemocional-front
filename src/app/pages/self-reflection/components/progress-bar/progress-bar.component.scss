@@ -1,0 +1,9 @@
+.progress {
+  height: 20px;
+  background-color: #e9ecef; // Cor de fundo da barra
+}
+
+.progress-bar {
+  background-color: #D81B60; // Cor da barra de progresso
+  transition: width 0.3s;
+}

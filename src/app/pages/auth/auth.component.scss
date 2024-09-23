@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  height: 100vh; 
+  background: linear-gradient(to bottom right, #e0f7fa, #ffe0b2); 
+  background-size: cover;
+  background-position: center; 
+  position: relative; 
+}
+
+.container {
+  position: relative; 
+  z-index: 1; 
+  padding: 20px; 
+}

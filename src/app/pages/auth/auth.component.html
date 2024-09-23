@@ -1,0 +1,17 @@
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="col-12 col-md-6">
+      <ng-container *ngIf="showLogin; else registerTemplate">
+        <app-login></app-login>
+      </ng-container>
+  
+      <ng-template #registerTemplate>
+        <app-register></app-register>
+      </ng-template>
+  
+      <div class="text-center mt-3">
+        <button (click)="toggleForm()" class="btn btn-link">
+          {{ showLogin ? 'Criar uma conta' : 'Já tenho uma conta' }}
+        </button>
+      </div>
+    </div>
+  </div>

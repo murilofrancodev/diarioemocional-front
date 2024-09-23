@@ -1,0 +1,49 @@
+:host {
+    display: block; 
+  }
+  
+  h2 {
+    color: #4a90e2; 
+    margin: 0;
+  }
+  
+  mat-dialog-content {
+    color: #333; 
+    padding: 20px; 
+  }
+  
+  mat-dialog-actions {
+    display: flex;
+    justify-content: flex-end; 
+    padding: 10px;
+  }
+  
+  .mat-dialog-container {
+    max-width: 600px; 
+    width: 100%; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease; 
+  }
+  
+  .mat-dialog-container.ng-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  
+  .mat-dialog-container.ng-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+  }
+  
+  .mat-dialog-container.ng-leave {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .mat-dialog-container.ng-leave-active {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }

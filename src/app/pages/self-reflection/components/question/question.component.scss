@@ -1,0 +1,37 @@
+.question-container {
+  margin: 20px 0;
+
+  h2 {
+    margin-bottom: 10px; // Margem abaixo do título
+  }
+
+  textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+    border: 1px solid #D81B60; 
+    border-radius: 5px; 
+    padding: 10px; 
+    resize: none; 
+    font-size: 1rem; 
+    transition: border-color 0.3s; 
+
+    &:focus {
+      border-color: #C2185B; 
+      outline: none; 
+    }
+  }
+
+  button {
+    width: 100%; 
+    padding: 10px; 
+    font-size: 1rem;
+    background-color: #D81B60; 
+    color: #fff; 
+    transition: background-color 0.3s; 
+
+    &:hover {
+      background-color: #C2185B; 
+    }
+  }
+}

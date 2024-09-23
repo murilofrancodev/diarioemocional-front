@@ -1,0 +1,46 @@
+.navbar {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #f8f9fa; 
+  
+    .navbar-brand {
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: #D81B60; 
+      transition: color 0.3s;
+  
+      &:hover {
+        color: #C2185B;
+      }
+    }
+  
+    .nav-link {
+      margin-right: 15px; 
+      font-size: 1.1rem;
+      color: #D81B60; 
+      transition: color 0.3s, transform 0.2s; 
+  
+      &:hover {
+        color: #C2185B; 
+        text-decoration: underline; 
+        transform: scale(1.05); 
+      }
+    }
+  
+    @media (max-width: 576px) {
+      .navbar-collapse {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        background-color: white; 
+        z-index: 1000;
+        padding: 10px; 
+        transition: max-height 0.3s ease; 
+      }
+  
+      .nav-link {
+        margin: 5px 20px; 
+      }
+    }
+  }

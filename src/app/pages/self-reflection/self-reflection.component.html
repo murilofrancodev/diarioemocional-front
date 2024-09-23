@@ -1,0 +1,19 @@
+<app-header></app-header>
+<div class="self-reflection-container container mt-4">
+  <app-progress-bar [current]="currentQuestionIndex + 1" [total]="questions.length"></app-progress-bar>
+  
+  <ng-container *ngIf="!isLastQuestion; else finalResponseTemplate">
+    <app-question 
+      [question]="questions[currentQuestionIndex]" 
+      (onAnswer)="handleAnswer($event)">
+    </app-question>
+  </ng-container>
+
+  <ng-template #finalResponseTemplate>
+    <h2 class="text-center">Resposta Final</h2>
+    <div class="emoji-container text-center">
+      <span class="emoji">😊</span> 
+    </div>
+    <p class="text-center">{{ finalResponse }}</p>
+  </ng-template>
+</div>

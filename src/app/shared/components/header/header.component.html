@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Diário de Emoções</a>
+      <button class="navbar-toggler" type="button" (click)="toggleMenu()" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div [ngClass]="{'collapse': !isMenuOpen, 'show': isMenuOpen}" class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/notes">Notas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/self-reflection">Momento de reflexão</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Diário de Sonhos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Controle Emocional</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
