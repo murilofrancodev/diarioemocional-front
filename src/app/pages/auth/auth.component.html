@@ -1,17 +1,18 @@
-<div class="container d-flex justify-content-center align-items-center min-vh-100">
-    <div class="col-12 col-md-6">
-      <ng-container *ngIf="showLogin; else registerTemplate">
-        <app-login></app-login>
-      </ng-container>
-  
-      <ng-template #registerTemplate>
-        <app-register></app-register>
-      </ng-template>
-  
+<div class="container d-flex flex-column justify-content-start align-items-center min-vh-100">
+  <app-logo-auth></app-logo-auth>
+  <div class="col-12 col-md-6">
+    <ng-container *ngIf="showOnboarding; else authTemplate">
+      <app-onboarding (close)="closeOnboarding()"></app-onboarding>
+    </ng-container>
+
+    <ng-template #authTemplate>
+      <router-outlet></router-outlet> 
+
       <div class="text-center mt-3">
-        <button (click)="toggleForm()" class="btn btn-link">
-          {{ showLogin ? 'Criar uma conta' : 'Já tenho uma conta' }}
+        <button (click)="goToRegister()" class="btn btn-link"> 
+          {{ showLogin ? 'Criar uma conta' : 'Já tenho uma conta' }} 
         </button>
       </div>
-    </div>
+    </ng-template>
   </div>
+</div>

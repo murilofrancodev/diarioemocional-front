@@ -10,15 +10,24 @@
   color: #555; 
 }
 
+.form-group {
+  margin-bottom: 1rem; 
+}
+
 .btn-primary {
-  background-color: #D81B60; 
-  border-color: #D81B60; 
-  transition: background-color 0.3s ease; 
+  background-color:   #1DE15C; 
+  border-color: #1DE15C; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: #C2185B; 
-    border-color: #C2185B; 
+    background-color: #0daf41; 
+    border-color: #0daf41; 
+    transform: scale(1.05); 
   }
+}
+
+.full-width {
+  width: 100%; 
 }
 
 @media (max-width: 576px) {

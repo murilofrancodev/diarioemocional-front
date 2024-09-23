@@ -1,0 +1,21 @@
+<div class="container">
+  <h2 class="text-center mt-2 mb-4">Digite seu PIN</h2>
+  <form (ngSubmit)="onSubmit()" #pinForm="ngForm">
+    <div class="form-group">
+      <label for="pin">PIN (4 dígitos)</label>
+      <input 
+        type="password" 
+        id="pin" 
+        class="form-control" 
+        required 
+        [(ngModel)]="pin" 
+        name="pin" 
+        maxlength="4" 
+        placeholder="****" 
+        pattern="[0-9]*" 
+        inputmode="numeric" 
+        autocomplete="off">
+    </div>
+    <button type="submit" class="btn btn-primary full-width mt-3">Confirmar</button>
+  </form>
+</div>

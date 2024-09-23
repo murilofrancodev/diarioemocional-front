@@ -7,13 +7,19 @@ import { FormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MessageDialogComponent } from '../../shared/components/message-dialog/message-dialog.component';
+import { LogoAuthComponent } from './components/logo-auth/logo-auth.component';
+import { PinAuthComponent } from './components/pin-auth/pin-auth.component';
+import { OnboardingComponent } from './components/onboarding/onboarding.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     LoginComponent,
     RegisterComponent,
-    MessageDialogComponent
+    MessageDialogComponent, 
+    LogoAuthComponent,
+    PinAuthComponent,
+    OnboardingComponent
   ],
   imports: [
     CommonModule,

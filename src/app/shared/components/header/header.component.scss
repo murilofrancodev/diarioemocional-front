@@ -1,46 +1,33 @@
 .navbar {
-    margin-bottom: 20px;
-    padding: 10px 20px;
+    margin: 0; /* Remove a margem inferior */
+    padding: 10px 0;
     background-color: #f8f9fa; 
+    position: fixed; /* Fixa a navbar na parte inferior */
+    bottom: 0; /* Alinha na parte inferior da tela */
+    left: 0;
+    right: 0;
   
-    .navbar-brand {
-      font-weight: 400;
-      font-size: 1.5rem;
-      color: #D81B60; 
-      transition: color 0.3s;
+    .nav-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #D81B60; 
+        font-size: 1.5rem; /* Ajuste o tamanho do ícone */
   
-      &:hover {
-        color: #C2185B;
-      }
+        mat-icon {
+            font-size: 24px; /* Ajuste o tamanho do ícone */
+        }
+  
+        &:hover {
+            color: #D81B60; /* Cor ao passar o mouse */
+        }
     }
   
-    .nav-link {
-      margin-right: 15px; 
-      font-size: 1.1rem;
-      color: #D81B60; 
-      transition: color 0.3s, transform 0.2s; 
-  
-      &:hover {
-        color: #C2185B; 
-        text-decoration: underline; 
-        transform: scale(1.05); 
-      }
-    }
-  
-    @media (max-width: 576px) {
-      .navbar-collapse {
-        position: absolute;
-        top: 56px;
-        left: 0;
-        right: 0;
-        background-color: white; 
-        z-index: 1000;
-        padding: 10px; 
-        transition: max-height 0.3s ease; 
-      }
-  
-      .nav-link {
-        margin: 5px 20px; 
-      }
+    .add-icon {
+        background-color: #D81B60; /* Cor de fundo para o ícone de adicionar */
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     }
   }

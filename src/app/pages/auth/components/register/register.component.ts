@@ -6,11 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  email: string = ''; 
   username: string = '';
   password: string = '';
   confirmPassword: string = '';
+  pin: string = ''; // Adiciona a propriedade para o PIN
   passwordVisible: boolean = false; 
   passwordStrength: string = '';
+  currentStep: number = 1; 
 
   checkPasswordStrength() {
     const password = this.password;
@@ -32,15 +35,39 @@ export class RegisterComponent {
     } else if (this.passwordStrength === 'Média') {
       return 60;
     } else {
-      return 30; // Fraca
+      return 30; 
     }
   }
 
+  addToPin(digit: string) {
+    if (this.pin.length < 4) {
+      this.pin += digit; // Adiciona o dígito ao PIN
+    }
+  }
+
+  removeLastDigit() {
+    this.pin = this.pin.slice(0, -1); // Remove o último dígito
+  }
+
+  clearPin() {
+    this.pin = ''; // Limpa o PIN
+  }
+
   onSubmit() {
-    if (this.password === this.confirmPassword) {
-      alert('Registro bem-sucedido!');
-    } else {
-      alert('As senhas não coincidem.');
+    if (this.currentStep === 1) {
+      this.currentStep++;
+    } else if (this.currentStep === 2) {
+      if (this.password === this.confirmPassword) {
+        this.currentStep++; 
+      } else {
+        alert('As senhas não coincidem.');
+      }
+    } else if (this.currentStep === 3) {
+      if (this.pin.length === 4) {
+        alert('Registro bem-sucedido!'); // Aqui você pode adicionar a lógica para registrar o usuário
+      } else {
+        alert('Por favor, digite um PIN de 4 dígitos.');
+      }
     }
   }
 }

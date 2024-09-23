@@ -1,0 +1,36 @@
+:host {
+    display: block;
+  }
+  
+  .container {
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    padding: 20px; 
+  }
+  
+  .progress {
+    height: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .progress-bar {
+    background-color: #1DE15C; 
+    transition: width 0.3s ease;
+  }
+
+  .btn-primary {
+    background-color:   #1DE15C; 
+    border-color: #1DE15C; 
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  
+    &:hover {
+      background-color: #0daf41; 
+      border-color: #0daf41; 
+      transform: scale(1.05); 
+    }
+  }
+  .full-width {
+    width: 100%; 
+  }
