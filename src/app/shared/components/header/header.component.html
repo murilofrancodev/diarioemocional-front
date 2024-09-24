@@ -1,19 +1,19 @@
 <nav class="navbar fixed-bottom navbar-light bg-light shadow-sm">
     <div class="container-fluid justify-content-around">
-        <a class="nav-icon" href="/">
+        <a class="nav-icon" [routerLink]="['/']">
             <mat-icon>home</mat-icon>
         </a>
-        <a class="nav-icon" href="/stats">
-            <mat-icon>bar_chart</mat-icon>
+        <a class="nav-icon" [routerLink]="['/home']">
+            <mat-icon>calendar_month</mat-icon>
         </a>
-        <a class="nav-icon add-icon" href="/add">
-            <mat-icon>add</mat-icon>
+        <a class="nav-icon add-icon" [routerLink]="['/emotion-audio']"> 
+            <mat-icon>mic</mat-icon> 
         </a>
-        <a class="nav-icon" href="/notes">
+        <a class="nav-icon" [routerLink]="['/notes']">
             <mat-icon>note</mat-icon>
         </a>
-        <a class="nav-icon" href="/settings">
+        <a class="nav-icon" [routerLink]="['/settings']">
             <mat-icon>settings</mat-icon>
         </a>
     </div>
-  </nav>
+</nav>

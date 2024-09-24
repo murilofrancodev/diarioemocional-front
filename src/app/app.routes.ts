@@ -10,7 +10,8 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
   { path: 'auth', loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule) },
   { path: 'notes', loadChildren: () => import('./pages/notes/notes.module').then(m => m.NotesModule) },
-  { path: 'self-reflection', loadChildren: () => import('./pages/self-reflection/self-reflection.module').then(m => m.SelfReflectionModule) }
+  { path: 'self-reflection', loadChildren: () => import('./pages/self-reflection/self-reflection.module').then(m => m.SelfReflectionModule) },
+  { path: 'emotion-audio', loadChildren: () => import('./pages/emotion-audio/emotion-audio.module').then(m => m.EmotionAudioModule) }
 ];
 
 @NgModule({

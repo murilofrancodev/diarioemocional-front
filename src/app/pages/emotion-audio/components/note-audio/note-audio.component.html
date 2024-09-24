@@ -1,0 +1,11 @@
+<div class="note-editor">
+  <button 
+    class="btn mb-3" 
+    [ngClass]="{'recording': isRecording, 'btn-success': !isRecording, 'btn-recording': isRecording}" 
+    (click)="startRecording()">
+    <mat-icon *ngIf="!isRecording" class="icon">mic</mat-icon>
+    <mat-icon *ngIf="isRecording" class="icon pulsate">stop</mat-icon>
+    <span class="button-text" [ngClass]="{'text-danger': isRecording}">{{ isRecording ? 'Gravando...' : 'Gravar sua emoção' }}</span>
+  </button>
+  <textarea [(ngModel)]="noteContent" placeholder="Carregando transcrição de voz..."></textarea>
+</div>
