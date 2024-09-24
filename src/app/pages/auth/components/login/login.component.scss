@@ -15,13 +15,13 @@
 }
 
 .btn-primary {
-  background-color:   #1DE15C; 
-  border-color: #1DE15C; 
+  background-color:   #c37cc4; 
+  border-color: #c37cc4; 
   transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
-    background-color: #0daf41; 
-    border-color: #0daf41; 
+    background-color: #c07ec6; 
+    border-color: #c07ec6; 
     transform: scale(1.05); 
   }
 }

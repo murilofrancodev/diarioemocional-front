@@ -16,7 +16,10 @@ export class HomeComponent {
     'Felicidade': '😊',
     'Tristeza': '😢',
     'Ansiedade': '😨',
-    'Raiva': '😡'
+    'Raiva': '😡',
+    'Amor': '❤️',          
+    'Surpresa': '😮',      
+    'Desprezo': '😒'  
   };
 
   mockNotes: Note[] = [

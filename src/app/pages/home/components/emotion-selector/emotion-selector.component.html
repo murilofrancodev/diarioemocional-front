@@ -1,15 +1,20 @@
-<div class="emotion-selector">
-    <h3>Como você está se sentindo hoje?</h3>
+<div class="container">
+  <div class="emotion-selector">
+    <h4 class="text-center">Como você está se sentindo hoje?</h4>
     <div class="btn-group" role="group">
       <button *ngFor="let emotion of emotions" 
-              class="btn" 
+              class="btn {{ emotion.name.toLowerCase() }}"
               [ngClass]="{'selected': selectedEmotion === emotion.emoji}" 
               (click)="selectEmotion(emotion.emoji)">
         {{ emotion.emoji }}
       </button>
     </div>
-    <div class="input-group mt-2">
-      <input type="text" class="form-control" placeholder="Adicionar emoção personalizada" #customEmotion>
-      <button class="btn" (click)="selectEmotion(customEmotion.value)">Adicionar</button>
-    </div>
   </div>
+</div>
+
+<app-modal-editor 
+  [isOpen]="isModalOpen" 
+  [selectedEmotion]="selectedEmotion"
+  (closeModal)="closeModal()"
+  (noteSaved)="saveNote()">
+</app-modal-editor>

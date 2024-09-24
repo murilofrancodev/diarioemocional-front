@@ -1,21 +1,21 @@
 <div class="container">
-  <h2 class="text-center mt-2 mb-4">Bem-vindo ao Diário de Emoções!</h2>
+  <h2 class="text-center mt-2 mb-4">Bem-vindo à <span style="color: #c37cc4;">Insight</span><br> seu Planner de Emoções</h2>
   <div class="progress">
     <div class="progress-bar" [style.width]="(currentStep / totalSteps) * 100 + '%'" role="progressbar"></div>
   </div>
 
   <div *ngIf="currentStep === 1">
-    <p>Este aplicativo foi criado para ajudá-lo a registrar suas emoções diárias e refletir sobre suas experiências. Vamos começar sua jornada de auto-reflexão e bem-estar!</p>
+    <p class="text-center">Este aplicativo foi criado para ajudá-lo a registrar suas emoções diárias e refletir sobre suas experiências.<br><br> Vamos começar sua jornada de auto-reflexão e bem-estar!</p>
     <button (click)="nextStep()" class="btn btn-primary full-width mt-3">Próximo</button>
   </div>
 
   <div *ngIf="currentStep === 2">
-    <p>Aqui, você pode facilmente registrar como se sente a cada dia. Escolha suas emoções e adicione notas para entender melhor suas experiências. Cada registro é um passo em direção ao seu bem-estar!</p>
+    <p class="text-center">Aqui, você pode facilmente registrar como se sente a cada dia. Escolha suas emoções e adicione notas para entender melhor suas experiências. <br><br>Cada registro é um passo em direção ao seu bem-estar!</p>
     <button (click)="nextStep()" class="btn btn-primary full-width mt-3">Próximo</button>
   </div>
 
   <div *ngIf="currentStep === 3">
-    <p>Responda a perguntas guiadas que o ajudarão a refletir sobre suas emoções e experiências. Essa prática pode aumentar sua consciência emocional e promover um crescimento pessoal significativo.</p>
+    <p class="text-center">Responda a perguntas guiadas que o ajudarão a refletir sobre suas emoções e experiências.<br><br> Essa prática pode aumentar sua consciência emocional e promover um crescimento pessoal significativo.</p>
     <button (click)="nextStep()" class="btn btn-primary full-width mt-3">Concluir</button>
   </div>
 </div>

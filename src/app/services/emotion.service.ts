@@ -10,7 +10,10 @@ export class EmotionService {
     { name: 'Felicidade', emoji: '😊' },
     { name: 'Tristeza', emoji: '😢' },
     { name: 'Ansiedade', emoji: '😨' },
-    { name: 'Raiva', emoji: '😡' }
+    { name: 'Raiva', emoji: '😡' },
+    { name: 'Amor', emoji: '❤️' },
+    { name: 'Surpresa', emoji: '😮' },
+    { name: 'Desprezo', emoji: '😒' }
   ];
 
   getEmotions(): Observable<Emotion[]> {

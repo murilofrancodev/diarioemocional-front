@@ -10,7 +10,9 @@ import { Emotion } from '../../../../models/emotion.model';
 export class EmotionSelectorComponent implements OnInit {
   @Output() emotionSelected = new EventEmitter<string>();
   emotions: Emotion[] = [];
-  selectedEmotion: string | null = null; 
+  selectedEmotion: string = '';
+  isModalOpen: boolean = false; 
+  noteContent: string = ''; 
 
   constructor(private emotionService: EmotionService) {}
 
@@ -27,5 +29,24 @@ export class EmotionSelectorComponent implements OnInit {
   selectEmotion(emotion: string) {
     this.selectedEmotion = emotion; 
     this.emotionSelected.emit(emotion);
+    this.openModal(); 
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  saveNote() {
+    if (this.noteContent.trim()) {
+      console.log('Nota salva:', this.noteContent); 
+      this.noteContent = '';
+      this.closeModal(); 
+    } else {
+      alert('Por favor, escreva algo antes de salvar.'); 
+    }
   }
 }

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service'; // Importe o serviço de autenticação
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -16,8 +14,6 @@ export class RegisterComponent {
   passwordVisible: boolean = false; 
   passwordStrength: string = '';
   currentStep: number = 1; 
-
-  constructor(private authService: AuthService, private http: HttpClient) {}
 
   checkPasswordStrength() {
     const password = this.password;
@@ -45,7 +41,7 @@ export class RegisterComponent {
 
   addToPin(digit: string) {
     if (this.pin.length < 4) {
-      this.pin += digit; 
+      this.pin += digit;
     }
   }
 
@@ -57,7 +53,7 @@ export class RegisterComponent {
     this.pin = ''; 
   }
 
-  async onSubmit() {
+  onSubmit() {
     if (this.currentStep === 1) {
       this.currentStep++;
     } else if (this.currentStep === 2) {
@@ -68,18 +64,7 @@ export class RegisterComponent {
       }
     } else if (this.currentStep === 3) {
       if (this.pin.length === 4) {
-        try {
-          const userCredential = await this.authService.register(this.email, this.password);
-          const idToken = await userCredential.user.getIdToken();
-          this.http.post('http://localhost:3000/verifyToken', { token: idToken })
-            .subscribe(response => {
-              alert('Registro bem-sucedido e token verificado!');
-            }, error => {
-              alert('Erro ao verificar token: ' + error.message);
-            });
-        } catch (error) {
-          alert('Erro ao registrar: ');
-        }
+        alert('Registro bem-sucedido!'); 
       } else {
         alert('Por favor, digite um PIN de 4 dígitos.');
       }
