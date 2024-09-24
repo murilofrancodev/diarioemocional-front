@@ -2,8 +2,8 @@
   margin: 20px 0;
 
   button {
-    display: flex; /* Usar flexbox para alinhar ícone e texto */
-    align-items: center; /* Alinha verticalmente o ícone e o texto */
+    display: flex; 
+    align-items: center; 
     width: 100%; 
     padding: 10px; 
     font-size: 1rem;
@@ -13,9 +13,9 @@
     transition: background-color 0.3s, border-color 0.3s; 
 
     &.recording {
-      background-color: #fff; /* Fundo branco durante a gravação */
-      border-color: #f44336; /* Borda vermelha durante a gravação */
-      color: #f44336; /* Texto vermelho durante a gravação */
+      background-color: #fff; 
+      border-color: #f44336; 
+      color: #f44336; 
     }
 
     &:hover {
@@ -23,18 +23,18 @@
     }
 
     .icon {
-      margin-right: 8px; /* Espaçamento entre o ícone e o texto */
-      font-size: 24px; /* Ajuste o tamanho do ícone se necessário */
+      margin-right: 8px; 
+      font-size: 24px; 
     }
 
     .button-text {
-      flex-grow: 1; /* Permite que o texto ocupe o espaço restante */
+      flex-grow: 1; 
     }
 
     &.btn-recording {
-      background-color: #fff; /* Fundo branco */
-      border-color: #f44336; /* Borda vermelha */
-      color: #f44336; /* Texto vermelho */
+      background-color: #fff; 
+      border-color: #f44336; 
+      color: #f44336; 
     }
   }
 

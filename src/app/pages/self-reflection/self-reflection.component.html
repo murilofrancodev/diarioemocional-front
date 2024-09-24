@@ -1,5 +1,9 @@
-<app-header></app-header>
 <div class="self-reflection-container container mt-4">
+  <h2 class="text-center mb-3">Reflexões Pessoais</h2>
+  <p class="text-center mb-4">
+    Reserve um momento para se aprofundar em suas experiências e emoções. Responda às perguntas abaixo para explorar seus pensamentos e sentimentos. <br><br>A auto-reflexão é uma ferramenta poderosa para o crescimento pessoal e para entender melhor a si mesmo. Suas respostas ajudarão a traçar um caminho para o autoconhecimento e a melhoria contínua."
+
+  </p>
   <app-progress-bar [current]="currentQuestionIndex + 1" [total]="questions.length"></app-progress-bar>
   
   <ng-container *ngIf="!isLastQuestion; else finalResponseTemplate">
@@ -17,3 +21,4 @@
     <p class="text-center">{{ finalResponse }}</p>
   </ng-template>
 </div>
+<app-header></app-header>
