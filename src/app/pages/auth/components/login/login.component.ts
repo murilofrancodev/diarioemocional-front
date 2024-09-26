@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MessageDialogComponent } from '../../../../shared/components/message-dialog/message-dialog.component'; 
+import { AuthService } from '../../../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,21 +10,27 @@ import { MessageDialogComponent } from '../../../../shared/components/message-di
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  username: string = '';
+  email: string = '';
   password: string = '';
   passwordVisible: boolean = false; 
 
-  constructor(private dialog: MatDialog, private router: Router) {}
+  constructor(private dialog: MatDialog, private router: Router, private authService: AuthService) {}
 
   onSubmit() {
-    const mockUsername = 'Teste';
-    const mockPassword = 'Teste';
-
-    if (this.username === mockUsername && this.password === mockPassword) {
-      this.router.navigate(['/home']); 
-    } else {
-      this.openDialog('Erro', 'Usuário ou senha incorretos.'); 
-    }
+    this.authService.login(this.email, this.password).subscribe({
+      next: (response) => {
+        if (response && response.token) {
+          this.authService.setToken(response.token); 
+          this.router.navigate(['/home']); 
+        } else {
+          this.openDialog('Erro', 'Usuário ou senha incorretos.'); 
+        }
+      },
+      error: (error) => {
+        console.error('Erro na requisição:', error);
+        this.openDialog('Erro', 'Erro ao conectar ao servidor.'); 
+      }
+    });
   }
 
   openDialog(title: string, message: string) {

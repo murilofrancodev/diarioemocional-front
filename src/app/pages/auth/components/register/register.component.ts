@@ -1,4 +1,8 @@
+// src/app/pages/auth/components/register/register.component.ts
 import { Component } from '@angular/core';
+import { AuthService } from '../../../../services/auth.service'; 
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr'; 
 
 @Component({
   selector: 'app-register',
@@ -7,13 +11,14 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
   email: string = ''; 
-  username: string = '';
+  displayName: string = '';
   password: string = '';
   confirmPassword: string = '';
-  pin: string = ''; 
   passwordVisible: boolean = false; 
   passwordStrength: string = '';
   currentStep: number = 1; 
+
+  constructor(private authService: AuthService, private router: Router, private toastr: ToastrService) {} // Injete o ToastrService
 
   checkPasswordStrength() {
     const password = this.password;
@@ -39,35 +44,25 @@ export class RegisterComponent {
     }
   }
 
-  addToPin(digit: string) {
-    if (this.pin.length < 4) {
-      this.pin += digit;
-    }
-  }
-
-  removeLastDigit() {
-    this.pin = this.pin.slice(0, -1); 
-  }
-
-  clearPin() {
-    this.pin = ''; 
-  }
-
   onSubmit() {
     if (this.currentStep === 1) {
       this.currentStep++;
     } else if (this.currentStep === 2) {
       if (this.password === this.confirmPassword) {
-        this.currentStep++; 
+        this.authService.register(this.email, this.password).subscribe({
+          next: (data) => {
+            console.log('Registro bem-sucedido:', data);
+            this.toastr.success('Registro realizado com sucesso!', 'Sucesso'); 
+            this.router.navigate(['/home']); 
+          },
+          error: (error) => {
+            console.error('Erro no registro:', error);
+            this.toastr.error('Erro ao registrar. Tente novamente.', 'Erro'); 
+          }
+        });
       } else {
-        alert('As senhas não coincidem.');
+        this.toastr.warning('As senhas não coincidem.', 'Atenção'); 
       }
-    } else if (this.currentStep === 3) {
-      if (this.pin.length === 4) {
-        alert('Registro bem-sucedido!'); 
-      } else {
-        alert('Por favor, digite um PIN de 4 dígitos.');
-      }
-    }
+    } 
   }
 }

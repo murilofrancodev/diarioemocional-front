@@ -10,6 +10,8 @@ import { CalendarModule } from 'angular-calendar';
 import { NoteListComponent } from './components/note-list/note-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { SharedModule } from '../../shared/shared.module';
+import { provideHttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,10 @@ import { SharedModule } from '../../shared/shared.module';
     CalendarModule,
     NgbModule,
     SharedModule
+  ],
+  providers: [
+    { provide: AuthService, useClass: AuthService },
+    provideHttpClient()
   ]
 })
 export class NotesModule { }

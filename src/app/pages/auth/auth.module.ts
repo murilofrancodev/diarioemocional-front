@@ -10,6 +10,9 @@ import { MessageDialogComponent } from '../../shared/components/message-dialog/m
 import { LogoAuthComponent } from './components/logo-auth/logo-auth.component';
 import { PinAuthComponent } from './components/pin-auth/pin-auth.component';
 import { OnboardingComponent } from './components/onboarding/onboarding.component';
+import { AuthService } from '../../services/auth.service';
+import { provideHttpClient } from '@angular/common/http';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,16 @@ import { OnboardingComponent } from './components/onboarding/onboarding.componen
     CommonModule,
     FormsModule,
     AuthRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }) 
+  ],
+  providers: [
+    { provide: AuthService, useClass: AuthService },
+    provideHttpClient(),
+    ToastrService 
   ]
 })
 export class AuthModule { }

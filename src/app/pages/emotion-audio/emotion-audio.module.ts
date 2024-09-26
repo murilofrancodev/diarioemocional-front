@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 import { SharedModule } from '../../shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
+import { provideHttpClient } from '@angular/common/http';
+import { AuthService } from '../../services/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,10 @@ import { MatIconModule } from '@angular/material/icon';
     NgbModule,
     SharedModule,
     MatIconModule
+  ],
+  providers: [
+    { provide: AuthService, useClass: AuthService },
+    provideHttpClient()
   ]
 })
 export class EmotionAudioModule { }

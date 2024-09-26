@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { provideFirebaseApp } from '@angular/fire/app';
+import { AuthService } from './services/auth.service';
 import { provideAuth } from '@angular/fire/auth';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { environment } from '../environments/environment';
+import { ToastrModule } from 'ngx-toastr';
+
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full' }, 
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
@@ -19,7 +22,7 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
   ],
 })
 export class AppRoutingModule { }
