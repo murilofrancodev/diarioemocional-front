@@ -1,9 +1,8 @@
 .navbar {
-    margin: 0; /* Remove a margem inferior */
-    padding: 10px 0;
-    background-color: #f8f9fa; 
-    position: fixed; /* Fixa a navbar na parte inferior */
-    bottom: 0; /* Alinha na parte inferior da tela */
+    margin: 0;
+    padding: 13px 0;
+    position: fixed;
+    bottom: 0; 
     left: 0;
     right: 0;
   
@@ -12,20 +11,20 @@
         flex-direction: column;
         align-items: center;
         text-decoration: none;
-        color: #D81B60; 
-        font-size: 1.5rem; /* Ajuste o tamanho do ícone */
+        color: #c07ec6; 
+        font-size: 1.5rem; 
   
         mat-icon {
-            font-size: 24px; /* Ajuste o tamanho do ícone */
+            font-size: 24px; 
         }
   
         &:hover {
-            color: #D81B60; /* Cor ao passar o mouse */
+            color: #c07ec6; 
         }
     }
   
     .add-icon {
-        background-color: #fff; /* Cor de fundo para o ícone de adicionar */
+        background-color: #fff; 
         border-radius: 50%;
         padding: 10px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

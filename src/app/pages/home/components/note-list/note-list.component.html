@@ -1,15 +1,15 @@
 <div class="container">
-<div class="note-list">
-  <h4 class="text-center">Emoções do Dia em Notas</h4>
-  <div *ngFor="let note of notes" class="accordion-item">
-    <div class="accordion-header" (click)="note.isOpen = !note.isOpen">
-      <strong>{{ note.time }}</strong>
-      <span class="emoji">{{ note.emoji }}</span> 
-      <span class="arrow" [ngClass]="{'open': note.isOpen}">{{ note.isOpen ? '▲' : '▼' }}</span>
-    </div>
-    <div class="accordion-body" *ngIf="note.isOpen">
-      {{ note.emotion }}: {{ note.content }}
+  <div class="note-list">
+    <h4 class="text-center">Sentimentos do dia registrados</h4>
+    <app-loading *ngIf="isLoading"></app-loading> 
+    <div *ngFor="let note of notes" class="accordion-item">
+      <div class="accordion-header" (click)="note.isOpen = !note.isOpen">
+        <strong>{{ note.time }}  {{ note.emotion }}</strong>
+        <span class="arrow" [ngClass]="{'open': note.isOpen}">{{ note.isOpen ? '▲' : '▼' }}</span>
+      </div>
+      <div class="accordion-body" *ngIf="note.isOpen">
+        {{ note.note }}
+      </div>
     </div>
   </div>
-</div>
 </div>

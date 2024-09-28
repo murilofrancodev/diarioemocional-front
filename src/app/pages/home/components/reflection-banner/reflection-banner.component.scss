@@ -1,0 +1,47 @@
+.reflection-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 35px 20px;
+    background-color: #c07ec6; 
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    text-decoration: none; 
+    color: inherit; 
+  
+    .content {
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600 !important;
+        color: #fff;
+      }
+  
+      p {
+        margin: 15px 0 0;
+        color: #fff;
+      }
+    }
+  
+    .arrow {
+
+      cursor: pointer;
+      color: #fff;
+      padding: 6px 8px 0px 8px;
+      border: 1px solid;
+     border-radius: 15px;
+  
+      mat-icon {
+        font-size: 24px;
+      }
+  
+      &:hover {
+        color: #a05a9c; 
+      }
+    }
+  
+    &:hover {
+      background-color: #F48FB1; 
+    }
+  }

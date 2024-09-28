@@ -8,6 +8,7 @@ import { Note } from '../../../../models/note.model';
 })
 export class NoteListComponent {
   @Input() notes: Note[] = []; 
+  @Input() isLoading: boolean = false; 
 
   hasNotes(): boolean {
     return this.notes.length > 0;

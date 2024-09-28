@@ -1,14 +1,14 @@
 <div class="modal" *ngIf="isOpen">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 class="text-center">Reflexões sobre sua emoção atual</h3>
-        <span class="close" (click)="close()">&times;</span>
-      </div>
-      <div class="modal-body">
-        <textarea [(ngModel)]="noteContent" placeholder="Escreva suas anotações aqui..."></textarea>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-success" (click)="saveNote()">Registrar Sentimento {{ selectedEmotion }}</button>
-      </div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="text-center">Descreva seu sentimento</h4>
+      <span class="close" (click)="close()">&times;</span>
+    </div>
+    <div class="modal-body">
+      <textarea [(ngModel)]="noteContent" placeholder="Digite aqui..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" (click)="saveNote()">Registrar Sentimento {{ selectedEmoji }}</button> 
     </div>
   </div>
+</div>

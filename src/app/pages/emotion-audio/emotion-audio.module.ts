@@ -10,6 +10,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { MatIconModule } from '@angular/material/icon';
 import { provideHttpClient } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -23,11 +24,16 @@ import { AuthService } from '../../services/auth.service';
     EmotionAudioRoutingModule,
     NgbModule,
     SharedModule,
-    MatIconModule
+    MatIconModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-right', 
+      preventDuplicates: true,
+  })
   ],
   providers: [
     { provide: AuthService, useClass: AuthService },
-    provideHttpClient()
+    provideHttpClient(),
+    ToastrService
   ]
 })
 export class EmotionAudioModule { }

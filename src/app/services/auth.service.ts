@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment.development';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -26,7 +27,7 @@ export class AuthService {
 
   logout() {
     this.token = null;
-    localStorage.removeItem('authToken');
+    this.removeTokenFromStorage();
   }
 
   getUser(): Observable<any> {
@@ -39,30 +40,22 @@ export class AuthService {
 
   setToken(token: string) {
     this.token = token;
-    localStorage.setItem('authToken', token);
+    this.saveTokenToStorage(token);
+  }
+
+  isAuthenticated(): boolean {
+    return this.isLoggedIn(); 
   }
 
   getToken(): string | null {
-    return this.token || localStorage.getItem('authToken');
+    return this.token || this.getTokenFromStorage();
   }
 
   isLoggedIn(): boolean {
     return this.getToken() !== null;
   }
 
-  private addAuthHeader(req: HttpRequest<any>): HttpRequest<any> {
-    const token = this.getToken();
-    if (token) {
-      return req.clone({
-        headers: new HttpHeaders({
-          'Authorization': `Bearer ${token}`
-        })
-      });
-    }
-    return req;
-  }
-
-  private createAuthorizationHeader(): HttpHeaders {
+  public createAuthorizationHeader(): HttpHeaders {
     const token = this.getToken();
     return new HttpHeaders({
       'Authorization': `Bearer ${token}`
@@ -72,5 +65,24 @@ export class AuthService {
   private handleError(error: any) {
     console.error('Ocorreu um erro:', error);
     return throwError(error); 
+  }
+
+  private saveTokenToStorage(token: string) {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('authToken', token);
+    }
+  }
+
+  private removeTokenFromStorage() {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.removeItem('authToken');
+    }
+  }
+
+  private getTokenFromStorage(): string | null {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      return localStorage.getItem('authToken');
+    }
+    return null;
   }
 }

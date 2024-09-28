@@ -1,7 +1,9 @@
 export interface Note {
-    time: string; 
-    emotion: string; 
-    content: string; 
-    emoji: string;
+    createdAt?: Date;
+    time?: string;
+    date?: Date;
+    note?: string;
+    emotion?: string;
+    emotionId?: string;
     isOpen?: boolean;
   }

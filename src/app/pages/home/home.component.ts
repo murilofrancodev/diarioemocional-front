@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { Note } from '../../models/note.model';
+import { EmotionService } from '../../services/emotion.service';
+import { Note } from '../../models/note.model'; 
+import { EmotionEnum } from '../../models/enums/emotion.enum'; 
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -11,25 +14,25 @@ export class HomeComponent {
   selectedEmotions: string[] = [];
   noteContent: string = '';
   notes: Note[] = []; 
-  
-  emotionEmojis: { [key: string]: string } = {
-    'Felicidade': '😊',
-    'Tristeza': '😢',
-    'Ansiedade': '😨',
-    'Raiva': '😡',
-    'Amor': '❤️',          
-    'Surpresa': '😮',      
-    'Desprezo': '😒'  
-  };
+  isLoading: boolean = true;
 
-  mockNotes: Note[] = [
-    { time: '08:30', emotion: 'Felicidade', emoji: '😊', content: 'Tive um ótimo dia!', isOpen: false },
-    { time: '10:00', emotion: 'Tristeza', emoji: '😢', content: 'Senti falta de um amigo.', isOpen: false },
-    { time: '14:15', emotion: 'Ansiedade', emoji: '😨', content: 'Preocupado com o trabalho.', isOpen: false },
-  ];
+  constructor(private emotionService: EmotionService, private toastr: ToastrService) {
+    this.loadEmotionNotes();
+  }
 
-  constructor() {
-    this.notes = this.mockNotes; 
+  loadEmotionNotes() {
+    this.emotionService.findEmotion().subscribe((response: { emotions: Note[] }) => {
+      this.notes = response.emotions.map(emotion => ({
+        time: emotion.createdAt ? new Date(emotion.createdAt).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : 'Hora não disponível',
+        emotion: EmotionEnum[emotion.emotion as keyof typeof EmotionEnum] || '', 
+        note: emotion.note,
+        isOpen: false
+      })).reverse();
+      this.isLoading = false; 
+    }, () => { 
+      this.toastr.warning('Ocorreu um erro ao carregar as suas notas, por favor tente novamente.'); 
+      this.isLoading = false; 
+    });
   }
 
   onDateSelected(date: Date) {
@@ -42,21 +45,5 @@ export class HomeComponent {
 
   onNoteChange(content: string) {
     this.noteContent = content;
-  }
-
-  saveNote() {
-    const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    const selectedEmotion = this.selectedEmotions.join(', ');
-
-    const newNote: Note = {
-      time: currentTime,
-      emotion: selectedEmotion,
-      emoji: this.emotionEmojis[selectedEmotion] || '❓', 
-      content: this.noteContent
-    };
-
-    this.notes.push(newNote); 
-    this.noteContent = ''; 
-    this.selectedEmotions = [];
   }
 }

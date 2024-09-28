@@ -1,0 +1,27 @@
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #ffffff; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+    .welcome-message {
+      font-size: 1.2rem;
+      color: #000;
+      font-weight: 500;
+    }
+  
+    .logout-icon {
+      cursor: pointer;
+      color: #000; 
+  
+      mat-icon {
+        font-size: 24px;
+      }
+  
+      &:hover {
+        color: #a05a9c;
+      }
+    }
+  }

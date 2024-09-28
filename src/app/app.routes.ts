@@ -1,29 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { provideFirebaseApp } from '@angular/fire/app';
-import { AuthService } from './services/auth.service';
-import { provideAuth } from '@angular/fire/auth';
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { environment } from '../environments/environment';
-import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth', pathMatch: 'full' }, 
-  { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
+  { path: 'home', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule),  canActivate: [AuthGuard] },
   { path: 'auth', loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule) },
-  { path: 'notes', loadChildren: () => import('./pages/notes/notes.module').then(m => m.NotesModule) },
-  { path: 'self-reflection', loadChildren: () => import('./pages/self-reflection/self-reflection.module').then(m => m.SelfReflectionModule) },
-  { path: 'emotion-audio', loadChildren: () => import('./pages/emotion-audio/emotion-audio.module').then(m => m.EmotionAudioModule) }
+  { path: 'self-reflection', loadChildren: () => import('./pages/self-reflection/self-reflection.module').then(m => m.SelfReflectionModule), canActivate: [AuthGuard] },
+  { path: 'emotion-audio', loadChildren: () => import('./pages/emotion-audio/emotion-audio.module').then(m => m.EmotionAudioModule), canActivate: [AuthGuard] },
+  { path: 'calendar', loadChildren: () => import('./pages/calendar/calendar.module').then(m => m.CalendarModule), canActivate: [AuthGuard] }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)], 
   exports: [RouterModule],
-  providers: [
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideAuth(() => getAuth()),
-  ],
 })
 export class AppRoutingModule { }
 

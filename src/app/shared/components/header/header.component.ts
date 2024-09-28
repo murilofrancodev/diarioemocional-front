@@ -7,8 +7,17 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   isMenuOpen: boolean = false;
+  isLoggedIn: boolean = false;
+
+  constructor() {
+    this.checkLoginStatus(); 
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  checkLoginStatus() {
+    this.isLoggedIn = !!localStorage.getItem('authToken');
   }
 }

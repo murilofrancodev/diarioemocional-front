@@ -1,9 +1,9 @@
 <nav class="navbar fixed-bottom navbar-light bg-light shadow-sm">
     <div class="container-fluid justify-content-around">
-        <a class="nav-icon" [routerLink]="['/']">
+        <a class="nav-icon" [routerLink]="isLoggedIn ? ['/home'] : ['/']">
             <mat-icon>home</mat-icon>
         </a>
-        <a class="nav-icon" [routerLink]="['/home']">
+        <a class="nav-icon" [routerLink]="['/calendar']">
             <mat-icon>calendar_month</mat-icon>
         </a>
         <a class="nav-icon add-icon" [routerLink]="['/emotion-audio']"> 

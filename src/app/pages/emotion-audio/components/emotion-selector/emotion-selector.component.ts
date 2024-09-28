@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EmotionService } from '../../../../services/emotion.service';
 import { Emotion } from '../../../../models/emotion.model';
+import { ToastrService } from 'ngx-toastr';
+import { CalendarService } from '../../../../services/calendar.service';
 
 @Component({
   selector: 'app-emotion-selector',
@@ -11,10 +13,11 @@ export class EmotionSelectorComponent implements OnInit {
   @Output() emotionSelected = new EventEmitter<string>();
   emotions: Emotion[] = [];
   selectedEmotion: string = '';
+  selectedEmoji: string = '';
   isModalOpen: boolean = false; 
   noteContent: string = ''; 
 
-  constructor(private emotionService: EmotionService) {}
+  constructor(private emotionService: EmotionService, private toastr: ToastrService, private calendarService: CalendarService) {} 
 
   ngOnInit() {
     this.loadEmotions();
@@ -28,7 +31,9 @@ export class EmotionSelectorComponent implements OnInit {
 
   selectEmotion(emotion: string) {
     this.selectedEmotion = emotion; 
-    this.emotionSelected.emit(emotion);
+    const selectedEmotionData = this.emotions.find(e => e.name === emotion); 
+    this.selectedEmoji = selectedEmotionData ? selectedEmotionData.emoji : '';
+    this.emotionSelected.emit(emotion); 
     this.openModal(); 
   }
 
@@ -40,13 +45,27 @@ export class EmotionSelectorComponent implements OnInit {
     this.isModalOpen = false;
   }
 
-  saveNote() {
-    if (this.noteContent.trim()) {
-      console.log('Nota salva:', this.noteContent); 
-      this.noteContent = '';
-      this.closeModal(); 
+  saveNote(noteData: { emotion: string, note: string }) { 
+    const { emotion, note } = noteData; 
+
+    if (note.trim()) {
+      this.emotionService.addEmotion(emotion, note).subscribe(
+        response => {
+          this.toastr.success('Sua emoção foi salva com sucesso!'); 
+          this.noteContent = '';
+          const emotionId = response.emotionId;
+          this.calendarService.addCalendarEntry({
+            emotionId: emotionId, 
+            date: new Date().toISOString() 
+          }).subscribe(
+            () => {
+              this.closeModal();
+            },
+          );
+        },
+      );
     } else {
-      alert('Por favor, escreva algo antes de salvar.'); 
+      this.toastr.warning('Por favor, escreva algo antes de salvar.', 'Atenção'); 
     }
   }
 }

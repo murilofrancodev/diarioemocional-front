@@ -1,14 +1,15 @@
+<app-header-top></app-header-top>
 <div class="emotion-note-container">
-    <h2 class="text-center mb-3">Vamos compartilhar sua emoção atual <span style="color: #D81B60;">Tailiny!</span></h2>
+    <h2 class="text-center mb-3">Momento Crítico: Expresse-se Aqui</h2>
     <p class="text-center">
-        Use o botão abaixo para gravar sua voz e expressar como você se sente. 
-        Fale sobre suas emoções, experiências do dia ou qualquer coisa que esteja em sua mente.<br><br>
-        Após a gravação, suas palavras serão transcritas e salvas como uma nota emocional.
+      Use o botão abaixo para gravar sua voz e compartilhar como você realmente se sente. 
+      Fale sobre suas emoções, experiências do dia ou qualquer pensamento que esteja em sua mente. Este é o seu espaço seguro para se expressar.<br><br>
+      Após a gravação, suas palavras serão transcritas e salvas como uma nota emocional, permitindo que você reflita sobre seus sentimentos sempre que precisar.
     </p>
     <app-emotion-selector (emotionSelected)="onEmotionSelected($event)"></app-emotion-selector>
     <app-note-audio 
       [(noteContent)]="noteContent" 
-      (noteSaved)="saveNote()">
+      >
     </app-note-audio>
   </div>
   <app-header></app-header>
