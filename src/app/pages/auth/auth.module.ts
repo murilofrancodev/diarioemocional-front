@@ -37,7 +37,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
   providers: [
     { provide: AuthService, useClass: AuthService },
     provideHttpClient(),
-    ToastrService 
+    ToastrService
   ]
 })
 export class AuthModule { }

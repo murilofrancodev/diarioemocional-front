@@ -1,7 +1,7 @@
 <div class="modal" *ngIf="isOpen">
   <div class="modal-content">
     <div class="modal-header">
-      <h4 class="text-center">Descreva seu sentimento</h4>
+      <h4 class="text-center">Você selecionou <span style="font-weight: bold;">{{ selectedEmotion | lowercase }}</span>, descreva esse sentimento:</h4>
       <span class="close" (click)="close()">&times;</span>
     </div>
     <div class="modal-body">

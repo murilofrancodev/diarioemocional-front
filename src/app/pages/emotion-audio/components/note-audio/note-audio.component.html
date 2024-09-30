@@ -7,5 +7,5 @@
     <mat-icon *ngIf="isRecording" class="icon pulsate">stop</mat-icon>
     <span class="button-text" [ngClass]="{'text-danger': isRecording}">{{ isRecording ? 'Gravando...' : 'Gravar sua emoção' }}</span>
   </button>
-  <textarea [(ngModel)]="noteContent" placeholder="Carregando transcrição de voz..."></textarea>
+  <textarea [(ngModel)]="noteContent"></textarea>
 </div>

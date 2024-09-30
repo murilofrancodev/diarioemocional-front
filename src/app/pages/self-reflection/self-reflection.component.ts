@@ -16,10 +16,24 @@ export class SelfReflectionComponent {
   
   currentQuestionIndex: number = 0;
   answers: string[] = [];
+  chatMessages: { question: string, answer: string }[] = [];
+  isTyping: boolean = false;
+  userAnswer: string = '';
 
   handleAnswer(answer: string) {
-    this.answers[this.currentQuestionIndex] = answer;
-    this.currentQuestionIndex++;
+    if (answer.trim()) { 
+      this.chatMessages.push({ question: this.questions[this.currentQuestionIndex], answer });
+      this.currentQuestionIndex++;
+      this.userAnswer = ''; 
+      this.simulateTyping();
+    }
+  }
+
+  simulateTyping() {
+    this.isTyping = true;
+    setTimeout(() => {
+      this.isTyping = false;
+    }, 3000); 
   }
 
   get isLastQuestion() {

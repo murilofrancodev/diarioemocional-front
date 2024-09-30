@@ -27,7 +27,7 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     HomeRoutingModule,
     CalendarModule,
-    NgbModule,
+    NgbModule, 
     SharedModule,
     MatIconModule,
     ToastrModule.forRoot({

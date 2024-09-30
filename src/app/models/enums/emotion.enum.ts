@@ -3,7 +3,12 @@ export enum EmotionEnum {
     TRISTEZA = '😢',
     ANSIEDADE = '😨',
     RAIVA = '😡',
-    AMOR = '❤️',
-    SURPRESA = '😮',
-    DESPREZO = '😒'
+    DEPRIMIDO = '😔',
+    TEDIO = '😪',
+    MEDO = '😱',
+    CANSADO = '😴',
+    ANGUSTIA = '😠',
+    NOSTALGIA = '😢',
+    VERGONHA = '😳',
+    APAIXONADO = '😍'
   }

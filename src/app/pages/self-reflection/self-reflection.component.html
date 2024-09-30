@@ -1,25 +1,38 @@
 <app-header-top></app-header-top>
-<div class="self-reflection-container container mt-4">
-  <h2 class="text-center mb-3">Reflexões Pessoais</h2>
-  <p class="text-center mb-4">
-    Reserve um momento para se aprofundar em suas experiências e emoções. Responda às perguntas abaixo para explorar seus pensamentos e sentimentos. <br><br>A auto-reflexão é uma ferramenta poderosa para o crescimento pessoal e para entender melhor a si mesmo. Suas respostas ajudarão a traçar um caminho para o autoconhecimento e a melhoria contínua."
 
-  </p>
-  <app-progress-bar [current]="currentQuestionIndex + 1" [total]="questions.length"></app-progress-bar>
-  
-  <ng-container *ngIf="!isLastQuestion; else finalResponseTemplate">
-    <app-question 
-      [question]="questions[currentQuestionIndex]" 
-      (onAnswer)="handleAnswer($event)">
-    </app-question>
-  </ng-container>
+<div class="self-reflection-container container mt-4">  
+  <div class="chat-container mb-4">
+    <ng-container *ngFor="let message of chatMessages">
+      <div class="chat-message question">
+        <strong>Pergunta:</strong> {{ message.question }}
+      </div>
+      <div class="chat-message answer">
+        <strong>Resposta:</strong> {{ message.answer }}
+      </div>
+    </ng-container>
+    
+    <ng-container *ngIf="isTyping">
+      <div class="chat-message typing">Digitando...</div>
+    </ng-container>
 
-  <ng-template #finalResponseTemplate>
-    <h2 class="text-center">Resposta Final</h2>
-    <div class="emoji-container text-center">
-      <span class="emoji">😊</span> 
+    <ng-container *ngIf="!isLastQuestion && !isTyping">
+      <div class="chat-message question">
+        <strong>Pergunta:</strong> {{ questions[currentQuestionIndex] }}
+      </div>
+    </ng-container>
+    
+    <ng-template #finalResponseTemplate>
+      <h2 class="text-center">Resposta Final</h2>
+      <p class="text-center">{{ finalResponse }}</p>
+    </ng-template>
+
+    <!-- Input container deve estar aqui -->
+    <div class="input-container">
+      <textarea [(ngModel)]="userAnswer" class="form-control" placeholder="Sua resposta..."></textarea>
+      <button class="btn btn-success" (click)="handleAnswer(userAnswer)">
+        <i class="fas fa-paper-plane"></i>
+      </button>
     </div>
-    <p class="text-center">{{ finalResponse }}</p>
-  </ng-template>
+  </div>
 </div>
 <app-header></app-header>
