@@ -14,21 +14,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Análise de código
         uses: actions/checkout@v4  
 
-      - name: Set up Node.js
+      - name: Análise do SonarCloud
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.FRONT_INSIGHT_SONAR_TOKEN }}  
+        run: |
+          npm install -g sonar-scanner --legacy-peer-deps
+          sonar-scanner \
+            -Dsonar.projectKey=murilofrancodev_diarioemocional-front \
+            -Dsonar.organization=murilofrancodev \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=$SONAR_TOKEN
+
+      - name: Adicionando Node.js
         uses: actions/setup-node@v4 
         with:
           node-version: '18' 
 
-      - name: Install dependencies
+      - name: Instalando dependências
         run: npm install --legacy-peer-deps
 
-      - name: Build the project
+      - name: Build do projeto
         run: npm run build --if-present
 
-      - name: Run tests
+      - name: Executar testes
         env:
           API_KEY: ${{ secrets.VARIAVEL_AMBIENTE_DEV }}
         run: npm test -- --watch=false --bail
+
