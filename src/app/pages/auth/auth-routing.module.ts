@@ -11,9 +11,8 @@ const routes: Routes = [
     { path: 'onboarding', component: OnboardingComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'pin', component: PinAuthComponent },
-    { path: '', redirectTo: 'onboarding', pathMatch: 'full' }
-  ] } 
+    { path: 'pin', component: PinAuthComponent }
+    ] } 
 ];
 
 @NgModule({

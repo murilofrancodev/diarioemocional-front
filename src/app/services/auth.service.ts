@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment.development';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
   private apiUrl = environment.apiUrl; 
   private token: string | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/sign-in`, { email, password }).pipe(
@@ -28,6 +29,7 @@ export class AuthService {
   logout() {
     this.token = null;
     this.removeTokenFromStorage();
+    this.router.navigate(['/auth/login']);
   }
 
   getUser(): Observable<any> {

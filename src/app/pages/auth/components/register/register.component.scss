@@ -51,6 +51,12 @@
     border-color: #c07ec6; 
     transform: scale(1.05); 
   }
+
+  &:disabled {
+    background-color: #ccc; 
+    border-color: #ccc; 
+    cursor: not-allowed; 
+  }
 }
 
 .full-width {

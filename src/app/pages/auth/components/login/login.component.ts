@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MessageDialogComponent } from '../../../../shared/components/message-dialog/message-dialog.component'; 
 import { AuthService } from '../../../../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   password: string = '';
   passwordVisible: boolean = false; 
 
-  constructor(private dialog: MatDialog, private router: Router, private authService: AuthService) {}
+  constructor(private dialog: MatDialog, private router: Router, private toastr: ToastrService, private authService: AuthService) {}
 
   onSubmit() {
     this.authService.login(this.email, this.password).subscribe({
@@ -23,12 +24,15 @@ export class LoginComponent {
           this.authService.setToken(response.token); 
           this.router.navigate(['/home']); 
         } else {
-          this.openDialog('Erro', 'Usuário ou senha incorretos.'); 
+          this.toastr.warning('Usuário ou senha incorretos.'); 
         }
       },
       error: (error) => {
-        console.error('Erro na requisição:', error);
-        this.openDialog('Erro', 'Erro ao conectar ao servidor.'); 
+        if (error.status === 401) { 
+          this.toastr.warning('Usuário ou senha incorretos.'); 
+        } else {
+          this.toastr.warning('Erro ao conectar ao servidor.'); 
+        }
       }
     });
   }
